@@ -7,24 +7,23 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/signup',(req,res)=>{
-    const{username,email,password,DOB}=req.body
-try{
+    const {username,email,password,DOB}=req.body
+
     if(!username){
        return res.status(400).send("Username cannot be empty")
     }
     if(!email){
         return res.status(400).send("Email cannot be empty")
     }
-    if(length(password)<8 && length(password)>16){
+    if(password.length<8 && password.length>16){
        return  res.status(400).send("Password length should be greater than 8 or less than or equal to 16")
     }
     if(!DOB){
         return res.status(400).send("Date of birth cannot be empty")
     }
-}
-catch(e){
- console.log(e);
-}
+    return res.status(200).send("Success")
+
+
 
 })
 
